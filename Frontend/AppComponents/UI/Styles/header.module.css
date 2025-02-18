@@ -1,0 +1,62 @@
+.header {
+    border: 1px solid black;
+    height: 75px;
+    display: grid;
+    grid-template-columns: 1.25fr 0.75fr;
+    grid-template-rows: 80px;
+}
+.header h1 {
+    margin-left: 100px;
+    font-size: 30px;
+}
+.title_and_settings {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    gap: 10px;
+}
+.configBtn {
+    height: 40px;
+    margin-top: 17.5px;
+    margin-left: 20px;
+    font-weight: bold;
+}
+.settings {
+    position: relative;
+    bottom: 18px;
+}
+.settings button{
+    width: 80px;
+    display: block;
+    border: none;
+    margin-bottom: 5px;
+    text-decoration: underline;
+    background-color: white;
+    &:hover {
+        color: red;
+    }
+}
+.main_content_options {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    padding: 5px;
+    align-items: center;
+}
+.main_content_options button {
+    height: 35px;
+    margin-bottom: 5px;
+    background-color: rgb(93, 92, 92);
+    border: none;
+    border-radius: 7.5px;
+    color: white;
+    &:hover {
+        transform: scale(1.025);
+    }
+}
+.main_content_options .activeBtn {
+    background-color: black;
+    color: white;
+    box-shadow: 0 0 10px goldenrod;
+    text-decoration: underline;
+}
+
