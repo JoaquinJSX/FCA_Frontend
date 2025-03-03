@@ -18,31 +18,40 @@ export default function Header({ users, setUsers, userLoggedIn, setUserLoggedIn,
     const [isShowingSettings, setIsShowingSettings] = useState(false);
 
     function logOut() {
-        navigate('/');
+        navigate('/log-in');
         setUserLoggedIn(null);
     }
 
     function deleteAccount() {
-        if (confirm('Are you sure that you want delete your account?')) {
-            fetch(`http://127.0.0.1:5000/user/${users[userLoggedIn].id}`, {
+        if (confirm('Are you sure that you want to delete your account?')) {
+            fetch(`http://127.0.0.1:5000/users/${users[userLoggedIn].id}`, {
                 method: 'DELETE',
             }).then(() => {
                 fetch('http://127.0.0.1:5000/users')
                     .then(response => response.json())
                     .then(data => setUsers(data))
             })
-            navigate('/log-in');
+            navigate('/');
         }
+    }
+
+    function changeSectionShowed(section: string) {
+        setContentShowed(section);
+        setIsShowingSettings(false);
     }
 
     return (
         <header className={styles.header}>
             <section className={styles.title_and_settings}>
-                <button className={styles.configBtn} onClick={() => setIsShowingSettings(isShowingSettings ? false : true)}>⁝</button>
+                    <img
+                        onClick={() => setIsShowingSettings(isShowingSettings ? false : true)}
+                        className={styles.configBtn}
+                        src="https://us.123rf.com/450wm/pytyczech/pytyczech1802/pytyczech180200242/96360239-icono-de-l%C3%ADnea-de-tres-barras.jpg"
+                        alt="config"
+                    />
                 <h1>Welcome {users[userLoggedIn].username}!</h1>
                 {isShowingSettings ?
                     <nav className={styles.settings}>
-                        <button>Edit profile</button>
                         <button onClick={logOut}>Log out</button>
                         <button onClick={deleteAccount}>Delete account</button>
                     </nav> : null}
@@ -50,25 +59,25 @@ export default function Header({ users, setUsers, userLoggedIn, setUserLoggedIn,
             <nav className={styles.main_content_options}>
                 <button
                     className={contentShowed == 'incomes' ? styles.activeBtn : ''}
-                    onClick={() => setContentShowed('incomes')}
+                    onClick={() => changeSectionShowed('incomes')}
                 >
                     Incomes
                 </button>
                 <button
                     className={contentShowed == 'expenses' ? styles.activeBtn : ''}
-                    onClick={() => setContentShowed('expenses')}
+                    onClick={() => changeSectionShowed('expenses')}
                 >
                     Expenses
                 </button>
                 <button
                     className={contentShowed == 'goals' ? styles.activeBtn : ''}
-                    onClick={() => setContentShowed('goals')}
+                    onClick={() => changeSectionShowed('goals')}
                 >
                     Goals
                 </button>
                 <button
                     className={contentShowed == 'monthly_report' ? styles.activeBtn : ''}
-                    onClick={() => setContentShowed('monthly_report')}
+                    onClick={() => changeSectionShowed('monthly_report')}
                 >
                     Monthly report
                 </button>
