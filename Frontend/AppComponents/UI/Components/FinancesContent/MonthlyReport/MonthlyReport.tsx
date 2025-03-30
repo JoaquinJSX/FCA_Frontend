@@ -75,7 +75,7 @@ export default function MonthlyReport({
         };
 
         try {
-            const response = await fetch(`http://127.0.0.1:5000/users/${user.id}/monthly_report`, {
+            const response = await fetch(`https://flask-api-0k43.onrender.com/users/${user.id}/monthly_report`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(reportData),
@@ -98,7 +98,7 @@ export default function MonthlyReport({
 
     const clearFinancialData = async () => {
         try {
-            const response = await fetch(`http://127.0.0.1:5000/users/${user.id}/clear_data`, {
+            const response = await fetch(`https://flask-api-0k43.onrender.com/users/${user.id}/clear_data`, {
                 method: 'DELETE',
             });
 
