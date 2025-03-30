@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import styles from './Styles/signUp.module.css';
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 interface SignUpProps {
     users: any;
@@ -14,23 +14,77 @@ export default function SignUp({ users, setUsers, setUserLoggedIn }: SignUpProps
     const navigate = useNavigate();
 
     const [newUser, setNewUser] = useState({ username: '', password: '' });
+    const [usernameError, setUsernameError] = useState("");
+    const [passwordError, setPasswordError] = useState("");
+    const passwordRef = useRef<HTMLInputElement>(null);
+    const usernameRef = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        const handleKeyPress = (event: KeyboardEvent) => {
+            if (event.key === "Enter") {
+                register();
+            }
+        };
+
+        document.addEventListener("keydown", handleKeyPress);
+
+        return () => {
+            document.removeEventListener("keydown", handleKeyPress);
+        };
+    }, [newUser.username, newUser.password]);
+
+    useEffect(() => {
+        if (newUser.password.length > 0) {
+            passwordRef.current?.style.removeProperty("border");
+            setPasswordError("");
+        }
+    }, [newUser.password]);
+
+    useEffect(() => {
+        if (newUser.username.length > 0) {
+            usernameRef.current?.style.removeProperty("border");
+            setUsernameError("");
+        }
+    }, [newUser.username]);
 
     function register() {
         if (newUser.username.length < 5) {
-            alert('Username must have 5 characters at least');
+            setUsernameError('Username must have 5 characters at least');
+            if (usernameRef.current) {
+                usernameRef.current.focus();
+                usernameRef.current.style.outline = "none";
+                usernameRef.current.style.border = "1px solid red";
+            }
         } else if (users.some((user: any) => user.username === newUser.username)) {
-            alert('Please choose another username, this already exists');
+            setUsernameError('Please choose another username, this already exists');
+            if (usernameRef.current) {
+                usernameRef.current.focus();
+                usernameRef.current.style.outline = "none";
+                usernameRef.current.style.border = "1px solid red";
+            }
+        } else if(newUser.password.length === 0) {
+            setPasswordError('Enter a password');
+            if (passwordRef.current) {
+                passwordRef.current.focus();
+                passwordRef.current.style.outline = "none";
+                passwordRef.current.style.border = "1px solid red";
+            }
         } else if (newUser.password.length < 4) {
-            alert('Password must have 4 characters at least');
+            setPasswordError('Password must have 4 characters at least');
+            if (passwordRef.current) {
+                passwordRef.current.focus();
+                passwordRef.current.style.outline = "none";
+                passwordRef.current.style.border = "1px solid red";
+            }
         } else {
-            fetch('http://127.0.0.1:5000/register', {
+            fetch('https://flask-api-0k43.onrender.com/users', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(newUser),
             })
-                .then(() => fetch('http://127.0.0.1:5000/users'))
+                .then(() => fetch('https://flask-api-0k43.onrender.com/users'))
                 .then(response => response.json())
                 .then(data => {
                     setUsers(data);
@@ -47,9 +101,11 @@ export default function SignUp({ users, setUsers, setUserLoggedIn }: SignUpProps
                 <h1>Create account</h1>
                 <form>
                     <label>Username:</label><br />
-                    <input type="text" value={newUser.username} onChange={e => setNewUser({ ...newUser, username: e.target.value })} /><br />
+                    <input type="text" ref={usernameRef} value={newUser.username} onChange={e => setNewUser({ ...newUser, username: e.target.value })} /><br />
+                    {usernameError && <p className={styles.error}><em>{usernameError}</em></p>}
                     <label>Password:</label><br />
-                    <input type="password" value={newUser.password} onChange={e => setNewUser({ ...newUser, password: e.target.value })} />
+                    <input type="password" ref={passwordRef} value={newUser.password} onChange={e => setNewUser({ ...newUser, password: e.target.value })} />
+                    {passwordError && <p className={styles.error}><em>{passwordError}</em></p>}
                 </form>
                 <button onClick={register}>Create</button><br />
                 <footer className={styles.footer}>

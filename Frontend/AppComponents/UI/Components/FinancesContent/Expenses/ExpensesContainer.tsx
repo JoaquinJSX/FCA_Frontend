@@ -1,51 +1,50 @@
-import styles from './../Styles/incomes.module.css';
+import styles from './../Styles/expenses.module.css';
 import addImage from './../../../../../Images/add-image.png';
 
-interface IncomesContainerProps {
-    incomes: any[] | null;
-    setContentShowed: (value: string) => void;
+interface ExpensesContainerProps {
+    expenses: any;
+    setSectionShowed: any;
 }
 
-export default function IncomesContainer({ incomes, setContentShowed }: IncomesContainerProps) {
-
+export default function ExpensesContainer({ expenses, setSectionShowed }: ExpensesContainerProps) {
 
     return (
-        <main className={styles.incomes_container}>
+        <main className={styles.expenses_container}>
             <img className={styles.addBtn}
-                onClick={() => setContentShowed('')}
+                onClick={() => setSectionShowed('')}
                 src={addImage}
                 alt=""
             />
-            {incomes && incomes.length !== 0 ? (
+            {expenses && expenses.length !== 0 ? (
                 <table>
                     <thead>
                         <tr>
                             <th>Date</th>
                             <th>Amount</th>
                             <th>Currency</th>
-                            <th>Provenance</th>
+                            <th>Purpose</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {incomes.map((item, index) => (
+                        {expenses.map((item: any, index: any) => (
                             <tr key={index}>
                                 <td>{item.date}</td>
                                 <td style={{ textAlign: 'right', fontWeight: 'bold' }}>
                                     {parseFloat(item.amount).toFixed(2)}
                                 </td>
                                 <td>{item.currency}</td>
-                                <td>{item.provenance}</td>
+                                <td>{item.purpose}</td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
             ) : (
-                <div className={styles.no_incomes}>
+                <div className={styles.no_expenses}>
                     <h1>
-                        <em>No incomes to show</em>
+                        <em>No expenses to show</em>
                     </h1>
                     <h2>
-                        <em>Tap "<span>+</span>" icon to add an income</em>
+                        <em>Tap "<span>+</span>" icon to add an expense</em>
                     </h2>
                 </div>
             )}

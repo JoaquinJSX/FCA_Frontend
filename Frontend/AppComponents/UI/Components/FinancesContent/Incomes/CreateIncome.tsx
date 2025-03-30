@@ -15,7 +15,7 @@ export default function CreateIncome({ user, setSectionShowed, setIncomes }: Cre
         currency: 'Soles',
         provenance: 'Salary'
     });
-
+    
     // Función para agregar un nuevo ingreso
     async function addIncome() {
         if (newIncome.amount === '') {
@@ -25,7 +25,7 @@ export default function CreateIncome({ user, setSectionShowed, setIncomes }: Cre
 
         try {
             const response = await fetch(
-                `http://127.0.0.1:5000/users/${user.id}/incomes`,
+                `https://flask-api-0k43.onrender.com/users/${user.id}/incomes`,
                 {
                     method: 'POST',
                     headers: {
@@ -42,10 +42,7 @@ export default function CreateIncome({ user, setSectionShowed, setIncomes }: Cre
                 throw new Error('Error al agregar el ingreso');
             }
 
-            const data = await response.json();
-            console.log('Ingreso agregado:', data);
-
-            fetch(`http://127.0.0.1:5000/users`)
+            fetch(`https://flask-api-0k43.onrender.com/users`)
                 .then((res) => res.json())
                 .then((data) => setIncomes(data[data.findIndex((i: any) => i.username === user.username)].incomes))
                 .then(() => setSectionShowed('incomes_container'));
@@ -79,7 +76,7 @@ export default function CreateIncome({ user, setSectionShowed, setIncomes }: Cre
                         onChange={e => setNewIncome({ ...newIncome, currency: e.target.value })}
                     >
                         <option value="Soles">Soles</option>
-                        <option value="USD">USD</option>
+                        <option value="USD" disabled>USD</option>
                     </select>
                 </section>
                 <section>
@@ -90,6 +87,7 @@ export default function CreateIncome({ user, setSectionShowed, setIncomes }: Cre
                     >
                         <option value="Salary">Salary</option>
                         <option value="Meal per diem">Meal per diem</option>
+                        <option value="Offered services">Offered services</option>
                         <option value="Return on investment">Return on investment</option>
                         <option value="Bonuses">Bonuses</option>
                         <option value="Tips">Tips</option>

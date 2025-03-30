@@ -1,4 +1,4 @@
-.incomes {
+.expenses {
     width: 1180px;
     height: 500px;
     margin: 0px auto;
@@ -8,7 +8,7 @@
     border-radius: 15px;
 }
 
-.incomes_container .addBtn {
+.expenses_container .addBtn {
     height: 30px;
     width: 30px;
     border-radius: 50%;
@@ -17,7 +17,7 @@
     position: relative;
     left: 100px;
 }
-.incomes_container table {
+.expenses_container table {
     width: 640px;
     min-height: auto;
     max-height: 400px;
@@ -28,17 +28,17 @@
     text-align: center;
     border-radius: 10px;
 }
-.incomes th {
+.expenses th {
     background-color: gold;
     border-radius: 5px;
 }
-.incomes td {
+.expenses td {
     background-color: rgb(224, 231, 231);
     border-radius: 5px;
     text-shadow: 0 0 0.25px gold;
     padding: 2.5px;
 }
-.new_income_container {
+.new_expense_container {
     border: 1px solid gold;
     border-radius: 10px;
     height: 280px;
@@ -48,7 +48,7 @@
     background-color: rgb(210, 218, 218);
     text-align: center;
 }
-.new_income_container button {
+.new_expense_container button {
     height: 30px;
     width: 65px;
     margin: 2.5px;
@@ -59,10 +59,10 @@
         border: 2px solid gold;
     }
 }
-.new_income_container .add_income_btn {
+.new_expense_container .add_income_btn {
     background-color: rgb(50, 210, 50);
 }
-.new_income_container .cancel_btn {
+.new_expense_container .cancel_btn {
     background-color: rgb(222, 68, 68);
 }
 .add_form {
@@ -81,7 +81,7 @@
 .add_form label {
     font-weight: bold;
 }
-.no_incomes {
+.no_expenses {
     background-color: rgb(120, 184, 184);
     border: 2px solid gold;
     border-radius: 15px;
@@ -90,12 +90,11 @@
     margin: 35px auto;
     text-align: center;
 }
-.no_incomes h2 {
+.no_expenses h2 {
     margin-block: 60px;
 }
-
 @media (max-width: 540px) {
-    .incomes {
+    .expenses {
         width: 100vw;
         height: 75vh;
         margin: 0 auto;
@@ -106,7 +105,7 @@
         background-size: cover;
         overflow: hidden;
     }
-    .incomes_container {
+    .expenses_container {
         width: 98vw;
         height: 75vh;
         margin: 0 auto;
@@ -117,7 +116,7 @@
         background-size: cover;
         overflow: hidden;
     }
-    .incomes_container table {
+    .expenses_container table {
         width: 90vw;
         min-height: auto;
         max-height: 70vh;
@@ -129,7 +128,7 @@
         text-align: center;
         border-radius: 10px;
     }
-    .new_income_container {
+    .new_expense_container {
         border: 1px solid gold;
         border-radius: 10px;
         height: 280px;
@@ -139,20 +138,20 @@
         background-color: rgb(210, 218, 218);
         text-align: center;
     }
-    .new_income_container input, select {
+    .new_expense_container input, select {
         width: 17vw;
     }
-    .new_income_container .add_form section {
+    .new_expense_container .add_form section {
         background-color: gold;
     }
-    .new_income_container .add_form {
+    .new_expense_container .add_form {
         width: 70vw;
         text-align: center;
     }
-    .no_incomes {
+    .no_expenses {
         width: 80vw;
     }
-    .incomes_container .addBtn {
+    .expenses_container .addBtn {
         position: relative;
         left: 10px;
         top: 5px;

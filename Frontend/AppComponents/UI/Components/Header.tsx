@@ -24,10 +24,10 @@ export default function Header({ users, setUsers, userLoggedIn, setUserLoggedIn,
 
     function deleteAccount() {
         if (confirm('Are you sure that you want to delete your account?')) {
-            fetch(`http://127.0.0.1:5000/users/${users[userLoggedIn].id}`, {
+            fetch(`https://flask-api-0k43.onrender.com/users/${users[userLoggedIn].id}`, {
                 method: 'DELETE',
             }).then(() => {
-                fetch('http://127.0.0.1:5000/users')
+                fetch('https://flask-api-0k43.onrender.com/users')
                     .then(response => response.json())
                     .then(data => setUsers(data))
             })

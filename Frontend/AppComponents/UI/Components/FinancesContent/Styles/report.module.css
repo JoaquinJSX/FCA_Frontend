@@ -1,0 +1,93 @@
+.report {
+    border: 1px solid rgb(161, 213, 229);
+    border-radius: 20px;
+    height: 505px;
+    width: 1000px;
+    margin: auto auto;
+    background-color: rgb(235, 235, 230);
+}
+.report .no_monthlyReport {
+    text-align: center;
+    height: 240px;
+    width: 680px;
+    margin: 100px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background: linear-gradient(90deg, skyblue, violet);
+    border-radius: 20px;
+}
+.container {
+    padding: 10px;
+    background: rgb(224, 218, 218);
+    border-radius: 10px;
+    box-shadow: 0 0 5px gold;
+    margin: 50px auto;
+    height: 380px;
+    width: 700px;
+}
+.container h1 {
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.container p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-shadow: 0.5px 0 0 black;
+}
+.container .buttons {
+    text-align: center;
+}
+.container .buttons button {
+    border: none;
+    height: 25px;
+    width: 75px;
+    margin: 10px;
+    background-color: black;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 0 5px gold;
+    border-radius: 10px;
+    &:hover {
+        transform: scale(1.050);
+    }
+}
+.container .buttons .disabledBtn {
+    background-color: white;
+    color: black;
+    font-family: cursive;
+    &:hover {
+        transform: scale(1);
+    }
+}
+@media screen and (max-width: 540px) {
+    .report {
+        border: 1px solid rgb(161, 213, 229);
+        border-radius: 20px;
+        height: 100%;
+        width: 100vw;
+        margin: auto auto;
+        background-color: rgb(235, 235, 230);
+    }
+    .report .no_monthlyReport {
+        text-align: center;
+        height: 420px;
+        width: 75vw;
+        margin: 100px auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        background: linear-gradient(90deg, skyblue, violet);
+        border-radius: 20px;
+    }
+    .container {
+        padding: 10px;
+        background: rgb(224, 218, 218);
+        border-radius: 10px;
+        box-shadow: 0 0 5px gold;
+        margin: 75px auto;
+        height: 380px;
+        width: 80vw;
+    }
+}
