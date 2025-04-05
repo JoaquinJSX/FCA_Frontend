@@ -37,7 +37,7 @@ export default function App() {
 
   return (
     <div className="app_container">
-      <BrowserRouter>
+      <BrowserRouter basename="/">
         <Suspense fallback={<h1>Loading...</h1>}>
           <Routes>
             <Route path="/" element={<Dashboard />} />
