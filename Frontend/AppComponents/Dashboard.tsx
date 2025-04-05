@@ -29,8 +29,8 @@ export default function Dashboard() {
         <div className={styles.headerContent}>
           <h1>Financial Control App</h1>
           <nav className={styles.nav}>
-            <button onClick={() => navigate("#/log-in")}>Log In</button>
-            <button onClick={() => navigate("#/sign-up")}>Sign Up</button>
+            <button onClick={() => navigate("/log-in")}>Log In</button>
+            <button onClick={() => navigate("/sign-up")}>Sign Up</button>
           </nav>
         </div>
         <p>

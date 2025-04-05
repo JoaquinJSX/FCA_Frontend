@@ -91,7 +91,7 @@ export default function LogIn({ users, setUserLoggedIn }: LogInProps) {
 
                     } else {
                         setUserLoggedIn(userId);
-                        navigate("#/finantial_control");
+                        navigate("/finantial_control");
                     }
                 }
             }
@@ -128,7 +128,7 @@ export default function LogIn({ users, setUserLoggedIn }: LogInProps) {
                 <button onClick={signIn} style={{ marginTop: !passwordError ? "20px" : 0 }}>
                     Enter
                 </button><br />
-                <Link to={'#/sign-up'}>Don't have an account?</Link>
+                <Link to={'/sign-up'}>Don't have an account?</Link>
                 <footer className={styles.footer}>
                     &copy; {new Date().getFullYear()} Limitless
                 </footer>
