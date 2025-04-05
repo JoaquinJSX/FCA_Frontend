@@ -29,7 +29,7 @@ export default function App() {
 
   //Hacer solicitud para obtención de usuarios a la API
   useEffect(() => {
-    fetch('https://flask-api-0k43.onrender.com/users')
+    fetch('https://fca-api-5k3h.onrender.com/users')
       .then(response => response.json())
       .then(data => setUsers(data))
       .catch(err => console.log(err))

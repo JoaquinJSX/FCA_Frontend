@@ -87,7 +87,7 @@ export default function GoalsContainer({ user, goals, setGoals, achievedGoals, s
 
     //Eliminar meta (API + Estado)
     async function deleteGoal(index: number) {
-        const deleteResponse = await fetch(`http://localhost:5000/users/${user.id}/goals/${index}`, {
+        const deleteResponse = await fetch(`https://fca-api-5k3h.onrender.com/users/${user.id}/goals/${index}`, {
             method: "DELETE",
         });
 

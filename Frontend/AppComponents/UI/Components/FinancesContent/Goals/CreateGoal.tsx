@@ -22,7 +22,7 @@ export default function CreateGoal({ user, setSectionShowed, setGoals }: CreateG
 
         try {
             const response = await fetch(
-                `https://flask-api-0k43.onrender.com/users/${user.id}/goals`,
+                `https://fca-api-5k3h.onrender.com/users/${user.id}/goals`,
                 {
                     method: 'POST',
                     headers: {
@@ -37,7 +37,7 @@ export default function CreateGoal({ user, setSectionShowed, setGoals }: CreateG
                 alert(data.message);
                 return;
             } else {
-                fetch(`https://flask-api-0k43.onrender.com/users`)
+                fetch(`https://fca-api-5k3h.onrender.com/users`)
                     .then((res) => res.json())
                     .then(data => {
                         setGoals(data[data.findIndex((i: any) => i.username === user.username)].goals);

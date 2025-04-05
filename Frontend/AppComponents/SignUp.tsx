@@ -77,14 +77,14 @@ export default function SignUp({ users, setUsers, setUserLoggedIn }: SignUpProps
                 passwordRef.current.style.border = "1px solid red";
             }
         } else {
-            fetch('https://flask-api-0k43.onrender.com/users', {
+            fetch('https://fca-api-5k3h.onrender.com/users', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(newUser),
             })
-                .then(() => fetch('https://flask-api-0k43.onrender.com/users'))
+                .then(() => fetch('https://fca-api-5k3h.onrender.com/users'))
                 .then(response => response.json())
                 .then(data => {
                     setUsers(data);
