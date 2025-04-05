@@ -47,7 +47,7 @@ export default function App() {
               path="/finantial_control"
               element={userLoggedIn ? <FinantialControl users={users} setUsers={setUsers} userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} />
                 :
-                <Navigate to="/log-in" replace />}
+                <Navigate to="/log-in"/>}
             />
           </Routes>
         </Suspense>
