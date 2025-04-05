@@ -90,8 +90,8 @@ export default function LogIn({ users, setUserLoggedIn }: LogInProps) {
                         }
 
                     } else {
-                        setUserLoggedIn(userId);
-                        navigate("/finantial_control");
+                        setUserLoggedIn(userId)
+                        .then(() => navigate("/finantial_control"));
                     }
                 }
             }
