@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { lazy, Suspense } from "react";
 const Dashboard = lazy(() => import("./AppComponents/Dashboard"));
@@ -43,12 +43,7 @@ export default function App() {
             <Route path="/" element={<Dashboard />} />
             <Route path="/log-in" element={<LogIn users={users} setUserLoggedIn={setUserLoggedIn} />} />
             <Route path="/sign-up" element={<SignUp users={users} setUsers={setUsers} setUserLoggedIn={setUserLoggedIn} />} />
-            <Route
-              path="/finantial_control"
-              element={userLoggedIn ? <FinantialControl users={users} setUsers={setUsers} userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} />
-                :
-                <Navigate to="/log-in"/>}
-            />
+            <Route path="/finantial_control" element={<FinantialControl users={users} setUsers={setUsers} userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} />} />
           </Routes>
         </Suspense>
       </BrowserRouter>
