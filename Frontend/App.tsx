@@ -41,9 +41,9 @@ export default function App() {
         <Suspense fallback={<h1>Loading...</h1>}>
           <Routes>
             <Route path="/" element={<Dashboard />} />
-            <Route path="/log-in" element={<LogIn users={users} setUserLoggedIn={setUserLoggedIn} />} />
-            <Route path="/sign-up" element={<SignUp users={users} setUsers={setUsers} setUserLoggedIn={setUserLoggedIn} />} />
-            <Route path="/finantial_control" element={<FinantialControl users={users} setUsers={setUsers} userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} />} />
+            <Route path="#/log-in" element={<LogIn users={users} setUserLoggedIn={setUserLoggedIn} />} />
+            <Route path="#/sign-up" element={<SignUp users={users} setUsers={setUsers} setUserLoggedIn={setUserLoggedIn} />} />
+            <Route path="#/finantial_control" element={<FinantialControl users={users} setUsers={setUsers} userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} />} />
           </Routes>
         </Suspense>
       </BrowserRouter>

@@ -18,7 +18,7 @@ export default function Header({ users, setUsers, userLoggedIn, setUserLoggedIn,
     const [isShowingSettings, setIsShowingSettings] = useState(false);
 
     function logOut() {
-        navigate('/log-in');
+        navigate('#/log-in');
         setUserLoggedIn(null);
     }
 
