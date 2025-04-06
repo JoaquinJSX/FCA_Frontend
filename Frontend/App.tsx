@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { lazy, Suspense } from "react";
 const Dashboard = lazy(() => import("./AppComponents/Dashboard"));
@@ -37,7 +37,7 @@ export default function App() {
 
   return (
     <div className="app_container">
-      <BrowserRouter basename="/">
+      <HashRouter>
         <Suspense fallback={<h1>Loading...</h1>}>
           <Routes>
             <Route path="/" element={<Dashboard />} />
@@ -46,7 +46,7 @@ export default function App() {
             <Route path="/finantial_control" element={<FinantialControl users={users} setUsers={setUsers} userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} />} />
           </Routes>
         </Suspense>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }
