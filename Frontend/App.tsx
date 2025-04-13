@@ -1,6 +1,7 @@
 import { HashRouter, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { lazy, Suspense } from "react";
+import PrivateRoutes from "./PrivateRoutes";
 const Dashboard = lazy(() => import("./AppComponents/Dashboard"));
 const LogIn = lazy(() => import("./AppComponents/LogIn"));
 const SignUp = lazy(() => import("./AppComponents/SignUp"));
@@ -43,7 +44,18 @@ export default function App() {
             <Route path="/" element={<Dashboard />} />
             <Route path="/log-in" element={<LogIn users={users} setUserLoggedIn={setUserLoggedIn} />} />
             <Route path="/sign-up" element={<SignUp users={users} setUsers={setUsers} setUserLoggedIn={setUserLoggedIn} />} />
-            <Route path="/finantial_control" element={<FinantialControl users={users} setUsers={setUsers} userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} />} />
+            <Route
+              path="/finantial_control"
+              element={
+                <PrivateRoutes>
+                  <FinantialControl
+                    users={users}
+                    setUsers={setUsers}
+                    userLoggedIn={userLoggedIn}
+                    setUserLoggedIn={setUserLoggedIn} />
+                </PrivateRoutes>
+              }
+            />
           </Routes>
         </Suspense>
       </HashRouter>
