@@ -1,7 +1,6 @@
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { lazy, Suspense } from "react";
-import PrivateRoutes from "./PrivateRoutes";
 const Dashboard = lazy(() => import("./AppComponents/Dashboard"));
 const LogIn = lazy(() => import("./AppComponents/LogIn"));
 const SignUp = lazy(() => import("./AppComponents/SignUp"));
@@ -13,8 +12,6 @@ import './index.css';
 export default function App() {
 
   const [users, setUsers] = useState([]);
-  //Estado hará que el usuario que inició sesión permanezca aunque se recargue la página
-  //Al cerrar la pesataña se perderá el estado
   const [userLoggedIn, setUserLoggedIn] = useState(() => {
     const storedUser = sessionStorage.getItem("userLoggedIn");
     return storedUser ? parseInt(storedUser) : null;
@@ -42,18 +39,19 @@ export default function App() {
         <Suspense fallback={<h1>Loading...</h1>}>
           <Routes>
             <Route path="/" element={<Dashboard />} />
-            <Route path="/log-in" element={<LogIn users={users} setUserLoggedIn={setUserLoggedIn} />} />
+            <Route path="/log-in" element={<LogIn users={users} userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} />} />
             <Route path="/sign-up" element={<SignUp users={users} setUsers={setUsers} setUserLoggedIn={setUserLoggedIn} />} />
             <Route
               path="/finantial_control"
               element={
-                <PrivateRoutes>
+                  userLoggedIn !== null ? 
                   <FinantialControl
                     users={users}
                     setUsers={setUsers}
                     userLoggedIn={userLoggedIn}
                     setUserLoggedIn={setUserLoggedIn} />
-                </PrivateRoutes>
+                    :
+                    <Navigate to="/log-in" />
               }
             />
           </Routes>

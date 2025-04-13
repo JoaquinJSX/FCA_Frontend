@@ -4,10 +4,11 @@ import styles from "./Styles/logIn.module.css";
 
 interface LogInProps {
     users: any;
+    userLoggedIn: any;
     setUserLoggedIn: any;
 }
 
-export default function LogIn({ users, setUserLoggedIn }: LogInProps) {
+export default function LogIn({ users, userLoggedIn, setUserLoggedIn }: LogInProps) {
     const navigate = useNavigate();
     const [inputUser, setInputUser] = useState({ username: "", password: "" });
     const [usernameError, setUsernameError] = useState("");
@@ -90,13 +91,18 @@ export default function LogIn({ users, setUserLoggedIn }: LogInProps) {
                         }
 
                     } else {
-                        setUserLoggedIn(userId)
-                        navigate("/finantial_control");
+                        setUserLoggedIn(userId);
                     }
                 }
             }
         }
     }
+
+    useEffect(() => {
+        if (userLoggedIn !== null) {
+            navigate("/finantial_control");
+        }
+    }, [userLoggedIn]);
 
     return (
         <div className={styles.container}>
