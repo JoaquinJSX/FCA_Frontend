@@ -23,14 +23,14 @@ export default function Finances({ users, userLoggedIn, contentShowed }: Finance
     const [reports, setReports] = useState(user.monthly_report);
     //Obtener el listado de ingresos
     useEffect(() => {
-        fetch(`https://fca-api-5k3h.onrender.com/users/${user.id}/incomes`)
+        fetch(`https://fca-api-5k3h.onrender.com/${user.id}/incomes`)
             .then(res => res.json())
             .then(data => setIncomes(data));
     }, []);
 
     //Obtener el listado de gastos
     useEffect(() => {
-        fetch(`https://fca-api-5k3h.onrender.com/users/${user.id}/expenses`)
+        fetch(`https://fca-api-5k3h.onrender.com/${user.id}/expenses`)
             .then(res => res.json())
             .then(data => setExpenses(data));
     }, []);
