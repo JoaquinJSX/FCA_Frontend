@@ -25,7 +25,7 @@ export default function CreateIncome({ user, setSectionShowed, setExpenses }: Cr
 
         try {
             const response = await fetch(
-                `https://fca-api-5k3h.onrender.com/users/${user.id}/expenses`,
+                `https://fca-api-5k3h.onrender.com/${user.id}/expenses`,
                 {
                     method: 'POST',
                     headers: {
@@ -42,7 +42,7 @@ export default function CreateIncome({ user, setSectionShowed, setExpenses }: Cr
                 throw new Error('Error al agregar el ingreso');
             }
 
-            fetch(`https://fca-api-5k3h.onrender.com/users`)
+            fetch(`https://fca-api-5k3h.onrender.com`)
                 .then((res) => res.json())
                 .then((data) => setExpenses(data[data.findIndex((i: any) => i.username === user.username)].expenses))
                 .then(() => setSectionShowed('expenses_container'));
