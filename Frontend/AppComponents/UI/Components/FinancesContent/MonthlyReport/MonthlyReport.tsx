@@ -75,7 +75,7 @@ export default function MonthlyReport({
         };
 
         try {
-            const response = await fetch(`https://fca-api-5k3h.onrender.com/users/${user.id}/monthly_report`, {
+            const response = await fetch(`https://fca-api-5k3h.onrender.com/${user.id}/monthly_report`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(reportData),
@@ -98,7 +98,7 @@ export default function MonthlyReport({
 
     const clearFinancialData = async () => {
         try {
-            const response = await fetch(`https://fca-api-5k3h.onrender.com/users/${user.id}/clear_data`, {
+            const response = await fetch(`https://fca-api-5k3h.onrender.com/${user.id}/clear_data`, {
                 method: 'DELETE',
             });
 
