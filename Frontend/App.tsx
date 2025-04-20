@@ -27,7 +27,7 @@ export default function App() {
 
   //Hacer solicitud para obtención de usuarios a la API
   useEffect(() => {
-    fetch('https://fca-api-5k3h.onrender.com/users')
+    fetch('https://fca-api-5k3h.onrender.com')
       .then(response => response.json())
       .then(data => setUsers(data))
       .catch(err => console.log(err))
