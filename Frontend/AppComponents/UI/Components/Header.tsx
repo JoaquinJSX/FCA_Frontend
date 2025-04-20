@@ -24,10 +24,10 @@ export default function Header({ users, setUsers, userLoggedIn, setUserLoggedIn,
 
     function deleteAccount() {
         if (confirm('Are you sure that you want to delete your account?')) {
-            fetch(`https://fca-api-5k3h.onrender.com/users/${users[userLoggedIn].id}`, {
+            fetch(`https://fca-api-5k3h.onrender.com/${users[userLoggedIn].id}`, {
                 method: 'DELETE',
             }).then(() => {
-                fetch('https://fca-api-5k3h.onrender.com/users')
+                fetch('https://fca-api-5k3h.onrender.com')
                     .then(response => response.json())
                     .then(data => setUsers(data))
             })
