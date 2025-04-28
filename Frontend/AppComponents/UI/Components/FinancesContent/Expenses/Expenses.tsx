@@ -3,13 +3,13 @@ import CreateExpense from "./CreateExpense";
 import ExpensesContainer from "./ExpensesContainer";
 import styles from './../Styles/expenses.module.css';
 
-interface IncomesProps {
+interface ExpensesProps {
     user: any;
     expenses: any;
     setExpenses: any;
 }
 
-export default function Incomes({ user, expenses, setExpenses }: IncomesProps) {
+export default function Expenses({ user, expenses, setExpenses }: ExpensesProps) {
 
     const [sectionShowed, setSectionShowed] = useState('expenses_container');
     const [loading, setLoading] = useState(true);
