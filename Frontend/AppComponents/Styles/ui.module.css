@@ -2,6 +2,9 @@
     height: 100vh;
     display: grid;
     grid-template-rows: 80px 1fr 50px;
+    background-size: cover;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 @media (max-width: 540px) {
@@ -11,7 +14,6 @@
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: auto 1fr auto;
-        background-size: cover;
         overflow: hidden;
     }
 }

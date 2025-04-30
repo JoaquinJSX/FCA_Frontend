@@ -18,9 +18,7 @@ export default function FinantialControl({ userLoggedIn, setUserLoggedIn, users,
     return (
         <>
             {userLoggedIn != null && users.length > 0 ?
-                <div 
-                style={{ overflowY: users[userLoggedIn].expenses.length > 16 ? 'scroll' : 'hidden' }}
-                className={styles.UI_container}>
+                <div className={styles.UI_container}>
                     <Header
                         users={users}
                         setUsers={setUsers}

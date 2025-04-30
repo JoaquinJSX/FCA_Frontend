@@ -1,9 +1,11 @@
 .finances {
     background: white;
+    overflow: hidden;
+    background-size: cover;
 }
+
 @media (max-width: 540px) {
     .finances {
         height: 75vh;
-        overflow: scroll;
     }
 }

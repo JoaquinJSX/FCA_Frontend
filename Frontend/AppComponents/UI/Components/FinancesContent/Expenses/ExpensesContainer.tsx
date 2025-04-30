@@ -8,6 +8,10 @@ interface ExpensesContainerProps {
 
 export default function ExpensesContainer({ expenses, setSectionShowed }: ExpensesContainerProps) {
 
+    function sayhello() {
+        console.log('Hello');
+    }
+
     return (
         <main className={styles.expenses_container}>
             <img className={styles.addBtn}

@@ -1,7 +1,12 @@
 body {
     margin: 0;
+    overflow: hidden;
 }
 img {
     height: 250px;
     width: 300px;
+}
+.app_container {
+    overflow: hidden;
+    background-size: cover;
 }
