@@ -25,7 +25,7 @@ export default function GoalsContainer({ user, goals, setGoals, achievedGoals, s
     const addAchievedGoal = async (goal: string, index: number) => {
         try {
             //Agregar a `achieved_goals` en la API
-            const response = await fetch(`http://localhost:5000/users/${user.id}/achieved_goals`, {
+            const response = await fetch(`https://fca-api-5k3h.onrender.com/${user.id}/achieved_goals`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(goal),
@@ -34,7 +34,7 @@ export default function GoalsContainer({ user, goals, setGoals, achievedGoals, s
             if (!response.ok) throw new Error("Error adding achieved goal");
 
             //Eliminar la meta de `goals` en la API
-            const deleteResponse = await fetch(`http://localhost:5000/users/${user.id}/goals/${index}`, {
+            const deleteResponse = await fetch(`https://fca-api-5k3h.onrender.com/${user.id}/goals/${index}`, {
                 method: "DELETE",
             });
 
@@ -57,7 +57,7 @@ export default function GoalsContainer({ user, goals, setGoals, achievedGoals, s
     const cancelAchievedGoal = async (goal: string, index: number) => {
         try {
             //Agregar a `goals` en la API
-            const response = await fetch(`http://localhost:5000/users/${user.id}/goals`, {
+            const response = await fetch(`https://fca-api-5k3h.onrender.com/${user.id}/goals`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(goal),
@@ -66,7 +66,7 @@ export default function GoalsContainer({ user, goals, setGoals, achievedGoals, s
             if (!response.ok) throw new Error("Error returning goal");
 
             //Eliminar la meta de `achieved_goals` en la API
-            const deleteResponse = await fetch(`http://localhost:5000/users/${user.id}/achieved_goals/${index}`, {
+            const deleteResponse = await fetch(`https://fca-api-5k3h.onrender.com/${user.id}/achieved_goals/${index}`, {
                 method: "DELETE",
             });
 
@@ -87,7 +87,7 @@ export default function GoalsContainer({ user, goals, setGoals, achievedGoals, s
 
     //Eliminar meta (API + Estado)
     async function deleteGoal(index: number) {
-        const deleteResponse = await fetch(`https://fca-api-5k3h.onrender.com/users/${user.id}/goals/${index}`, {
+        const deleteResponse = await fetch(`https://fca-api-5k3h.onrender.com/${user.id}/goals/${index}`, {
             method: "DELETE",
         });
 
